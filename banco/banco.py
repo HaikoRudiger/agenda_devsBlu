@@ -20,7 +20,7 @@ if conn is not None:
 
     cursor = conn.cursor()
     
-    cursor.execute('CREATE TABLE usuario (id serial, username VARCHAR(50) NOT NULL, nome VARCHAR(50)  NOT NULL, admin bool NOT NULL, senha VARCHAR(256) NOT NULL);')
+    cursor.execute('CREATE TABLE IF NOT EXISTS usuario (id serial, username VARCHAR(50) NOT NULL, nome VARCHAR(50)  NOT NULL, admin bool NOT NULL, senha VARCHAR(256) NOT NULL);')
         
     cursor.execute('ALTER TABLE usuario ADD PRIMARY KEY(id);')
     
@@ -41,7 +41,7 @@ if conn is not None:
     conn.close()
     
 '''
-/index
+/
 /login
 /autenticar
 /cadastrar evento
