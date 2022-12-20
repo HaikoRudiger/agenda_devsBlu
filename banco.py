@@ -39,3 +39,16 @@ if conn is not None:
     conn.commit()
     cursor.close()
     conn.close()
+    
+'''
+/index
+/login
+/autenticar
+/cadastrar evento
+/cadastro usuario
+/calendario (tabela)
+/editar
+/deletar
+/logout
+
+'''
