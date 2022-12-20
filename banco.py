@@ -4,10 +4,10 @@ print("Teste de conexão")
 
 try:
     conn = psycopg2.connect(
-    host = "192.168.1.102",
-    port ="5432",
+    host = "localhost",
+    port ="5433",
     database = "postgres", 
-    user="postgres", password = "123456")
+    user="david", password = "123456")
     print("Conectado")
 
 except Exception:
@@ -53,6 +53,8 @@ SELECT * FROM usuario;
 INSERT INTO usuario (id, username, nome, admin, senha)
 	VALUES (1, 'david', 'David Simas', true, '123456');
 
+INSERT INTO usuario (id, username, nome, admin, senha)
+	VALUES (2, 'felipe', 'Felipe Weiss', true, '123456');
 
 SELECT * FROM evento;
 
@@ -61,7 +63,7 @@ INSERT INTO evento (id, id_usuario, data_evento, titulo, descricao, publico, ati
 
 
 SELECT 
-	evento.id "Código",
+	evento.id "Código Evento",
 	evento.data_evento "Data",
 	evento.titulo "Título",
 	evento.descricao "Descrição",
@@ -73,5 +75,10 @@ SELECT
 	usuario.admin "Administrador",
 	usuario.senha "Password"
 FROM evento
-INNER JOIN usuario ON usuario.id = evento.id_usuario;
+INNER JOIN usuario ON usuario.id = evento.id_usuario
+WHERE username = 'david';
+
+  ou
+
+WHERE id_usuario = 1;
 """
