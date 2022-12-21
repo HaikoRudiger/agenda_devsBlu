@@ -9,7 +9,8 @@
 }
 
 body {
-	background: linear-gradient(90deg, #c8e6c9, #4bc970);		
+	background: linear-gradient(90deg, #c8e6c9, #4bc970);	
+	font-family: Raleway, sans-serif;	
 }
 
 hr {
@@ -155,6 +156,7 @@ hr {
 	color: #4bc970;
 }
 
+
 .social-login {	
 	position: absolute;
 	height: 140px;
@@ -215,8 +217,25 @@ table {
 	border-spacing: 0;
 }
 
+.list-inline-item {
+	vertical-align:middle;
+}
+
+ol {
+	text-align: center;	
+	color: #4bc970;
+	font-family: Raleway, sans-serif;
+	font-weight: bold;
+	font-size: 24px;
+	margin-left: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+	color: #4bc970;
+}
+
 .calendar {
 	text-align: center;
+	font-family: Raleway, sans-serif;
 }
 
 .calendar header {
@@ -234,6 +253,7 @@ table {
 
 .calendar tbody {
 	color: #050806;
+	font-family: Raleway, sans-serif;
 }
 
 .calendar tbody td:hover {
@@ -248,6 +268,7 @@ table {
 	line-height: 4em;
 	text-align: center;
 	width: 4em;
+	font-family: Raleway, sans-serif;
 }
 
 .calendar .prev-month,
