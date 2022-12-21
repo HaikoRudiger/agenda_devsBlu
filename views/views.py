@@ -1,151 +1,101 @@
-from flask import render_template, request, redirect, session, flash, url_for
-from main import app, db
+from flask import render_template, request, redirect, flash, url_for,session
+from main import db, app
 from models.evento import Evento
 from models.usuario import Usuario
 
-
 @app.route('/index')
 def index():
+    return redirect(url_for('index'))
 
-@app.route('/calendario')
-def calendario():
+@app.route('/novo-usuario')
+def novo():
+    return render_template('cadastro-usuario.html', titulo = 'Criar Novo Usuário')
+
+@app.route('/cadastrar-usuario', methods = ['POST'])
+def cadastro_usuario():
+
+    nome = request.form['nome']
+    userName = request.form['username']
+    senha = request.form['senha'] #ver com a parte do Jean.
+
+    usuario = Usuario.query.filter_by(username = userName).first()
+    
+    if usuario:
+        flash('Usuário já cadastrado')
+        return redirect(url_for('index'))
+    
+    novo_usuario = Usuario(nome = nome, username = userName, senha = senha)
+    
+    db.session.add(novo_usuario)
+
+    db.session.commit()
+
+    return redirect(url_for(index))
+
+#url_for chama a função.
+# nome, hora e descrição
+# nome de usuario e senha
 
 @app.route('/login')
 def login():
 #Jean
 
-@app.route('/logout')
-def logout():
-
 @app.route('/autenticar')
 def autenticacao():
 #Jean
 
-
-
-
 @app.route('/cadastrar-evento')
 def cadastrar_evento():
+    
+    data_evento = request.form['data_evento']
+    titulo_evento = request.form['titulo_evento']
+    descricao_evento = request.form['descricao_evento']
+    publico = request.form['publico']
+    ativo = request.form['ativo']
 
+    evento = Evento.query.filter_by(data_evento = data_evento).first()
+    
+    if evento:
+        flash('Já existe um evento nessa data')
+        return redirect(url_for('calendario'))
 
+    novo_evento = Evento(data_evento = data_evento, titulo_evento = titulo_evento, descricao_evento = descricao_evento, publico = publico, ativo = ativo)
+    
+    db.session.add(novo_evento)
+
+    db.session.commit()
+
+    return redirect(url_for('calendario'))
+
+@app.route('/calendario')
+def calendario():
+    return render_template('calendario.html')
 
 @app.route('/editar/<int:id>')
 def editar(id):
 
     if 'usuario_logado' not in session or session['usuario_logado'] is None:
         return redirect(url_for('login', proximo = url_for('editar')))
-    evento = 
+    evento = Evento.query.filter_by(id=id).first() #verificar qual é o ID que virá, se é do usuário ou do evento.
+    return render_template('HTML DO EDITAR - COLOCAR AQUI', titulo = 'Editar Evento', evento = evento)
 
-@app.route('/deletar')
-def deletar():
-
-
-
-
-
-
-
-
-
-
-
-
-@app.route("/")
-def index():
-    pessoa = Pessoas.query.order_by(Pessoas.id)
-
-    return render_template("listar.html", titulo = "Pessoas", pessoas = pessoa)
-
-
-@app.route("/novo")
-def novo():
-    if "usuario_logado" not in session or session["usuario_logado"] is None:
-        return redirect(url_for("login", proximo = url_for("novo")))
-        
-    return render_template("novo.html", titulo = "Cadastrar pessoa")
-
-
-@app.route("/criar", methods = ["POST"])
-def criar():
-    nome = request.form["nome"]
-    idade = request.form["idade"]
-    altura = request.form["altura"]
-
-    pessoa = Pessoas.query.filter_by(nome = nome).first()
-    if pessoa:
-        flash("Pessoa já cadastrada.")
-
-        return redirect(url_for("index"))
-
-    nova_pessoa = Pessoas(nome = nome, idade = idade, altura = altura)
-    db.session.add(nova_pessoa)
-    db.session.commit()
-
-    return redirect(url_for("index"))
-
-
-@app.route("/editar/<int:id>")
-def editar(id):
-    if "usuario_logado" not in session or session["usuario_logado"] is None:
-        return redirect(url_for("login", proximo = url_for("editar")))
-    # Fazer uma query do banco
-    pessoa = Pessoas.query.filter_by(id = id).first()
-
-    return render_template("editar.html", titulo = "Editar Pessoa", pessoas = pessoa)
-
-
-@app.route("/atualizar", methods = ["POST"])
-def atualizar():
-    pessoa = Pessoas.query.filter_by(id = request.form["id"]).first()
-    pessoa.nome = request.form["nome"]
-    pessoa.idade = request.form["idade"]
-    pessoa.altura = request.form["altura"]
-
-    db.session.add(pessoa)
-    db.session.commit()
-
-    return redirect(url_for("index"))
-
-
-@app.route("/deletar/<int:id>")
+@app.route('/deletar/<int:id>')
 def deletar(id):
-    if "usuario_logado" not in session or session["usuario_logado"] is None:
-        return redirect(url_for("login", proximo = url_for("editar")))
+
+    if 'usuario_logado' not in session or session['usuario_logado' is None]:
+        return redirect(url_for('login'))
     
-    Pessoas.query.filter_by(id = id).delete()
+    Evento.query.filter_by(id=id).delete()
+
     db.session.commit()
-    flash("Pessoa deletada com sucesso.")
 
-    return redirect(url_for("index"))
+    flash('Evento deletado com sucesso')
+    return redirect(url_for('index'))
 
-
-@app.route("/logout")
+@app.route('/logout')
 def logout():
-    session["usuario_logado"] = None
-    flash("Você foi desconectado.")
+    session['usuario_logado'] = None
+    flash("Você foi desconectado")
 
-    return redirect(url_for("login"))
+    return redirect(url_for('login'))
 
-
-@app.route("/login")
-def login():
-        proximo = request.args.get("proximo")
-
-        return render_template("login.html", proximo = proximo)
-
-
-@app.route("/autenticar", methods = ["POST"])
-def autenticar():
-    usuario = Usuarios.query.filter_by(nickname = request.form["usuario"]).first()
-    if usuario:
-        if request.form["senha"] == usuario.senha:
-
-            session["usuario_logado"] = usuario.nickname            
-            flash(usuario.nickname + " Logado com sucesso")
-            proxima_pagina = request.form["proximo"]
-
-            return redirect(proxima_pagina)
-    else:
-        flash("Usuário ou senha incorretos tente novamente.")
-
-        return redirect(url_for("login"))
