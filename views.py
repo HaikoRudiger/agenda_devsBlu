@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, flash, url_for,session
+from flask import render_template, request, redirect, flash, url_for,session, auth
 from main import db, app
 from models.evento import Evento
 from models.usuario import Usuario
@@ -38,11 +38,23 @@ def cadastro_usuario():
 
 @app.route('/login')
 def login():
-#Jean
+    return render_template('login.html', titulo = 'Login Usuario')
 
-@app.route('/autenticar')
-def autenticacao():
-#Jean
+@app.route('/autenticar', methods=['POST',])
+def autenticar():
+    autenticado = auth.validaLogin(request.form['usuario'], request.form['senha'])
+    if autenticado:
+        session['usuario_logado'] = True
+
+        flash('Logado com sucesso')
+
+        return redirect(url_for("inicio"))
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    flash('VOCE FOi DESCONECTADO')
+    return redirect(url_for('login'))
 
 @app.route('/cadastrar-evento')
 def cadastrar_evento():
@@ -91,11 +103,3 @@ def deletar(id):
 
     flash('Evento deletado com sucesso')
     return redirect(url_for('index'))
-
-@app.route('/logout')
-def logout():
-    session['usuario_logado'] = None
-    flash("Você foi desconectado")
-
-    return redirect(url_for('login'))
-
