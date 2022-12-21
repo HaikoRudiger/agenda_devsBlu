@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }}</title> <!-- Tela de cadastro de Usuário -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/login.css') }}">
+</head>
+<body>
+
+    <!-- Remover o código anterios -->
+    {% extends "template.html" %}
+    {% block conteudo %}
+
+    <form action="{{ url_for('criar') }}" method="post">
+        <fieldset>
+
+            <div>
+                <label for="nome_usuario">Nome de Usuário</label>
+                <input type="text" class="" id="nome_usuario" name="nome_usuario" placeholder="Nome de Usuário">
+            </div>
+            <div>
+                <label for="nickname">Nickname</label>
+                <input type="text" class="" id="nickname" name="nickname" placeholder="Apelido">
+            </div>
+            <div>
+                <label for="senha_usuario">Senha do Usuário</label>
+                <input type="text" class="" id="senha_usuario" name="senha_usuario" placeholder="Senha do Usuário">
+            </div>
+
+            <button type="submit">Salvar</button>
+            <button type="submit">Cancelar</button><!-- Ver a necessidade do botão cancelar -->
+
+        </fieldset>
+    </form>
+    
+    {% endblock %}
+    <!-- Remover o código posterior -->
+
+</body>
+</html>

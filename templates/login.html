@@ -1,41 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <link rel="stylesheet" href="style.css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar</title>
+    <title>{{ titulo }}</title> <!-- Tela de Login -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/login.css') }}">
 </head>
-
 <body>
-    <div class="container">
-        <div class="screen">
-            <div class="screen__content">
-                <form class="login">
-                    <div class="login__field">
-                        <i class="login__icon fas fa-user"></i>
-                        <input type="text" class="login__input" placeholder="Nome de Usuário">
-                    </div>
-                    <div class="login__field">
-                        <i class="login__icon fas fa-lock"></i>
-                        <input type="password" class="login__input" placeholder="Senha">
-                    </div>
-                    <button class="button login__submit">
-                        <span class="button__text">login</span>
-                        <i class="button__icon fas fa-chevron-right"></i>
-                    </button>				
-                </form>
-            </div>
-            <div class="screen__background">
-                <span class="screen__background__shape screen__background__shape4"></span>
-                <span class="screen__background__shape screen__background__shape3"></span>		
-                <span class="screen__background__shape screen__background__shape2"></span>
-                <span class="screen__background__shape screen__background__shape1"></span>
-            </div>		
-        </div>
-    </div>
 
+    <form action="{{ url_for('autenticar') }}" method="post">
+        <fieldset>
+
+            <input type="hidden" name="proximo" value="{{ proximo or url_for('index') }}">
+
+            <div>
+                <label for="nome">Nome de Usuário</label>
+                <input type="text" class="" id="nome" name="nome" placeholder="Nome de Usuário">
+            </div>
+            <div">
+                <label for="senha">Senha</label>
+                <input type="password" class="" id="senha" name="senha" placeholder="Senha">
+            </div>
+
+            <button type="submit" class="">Salvar</button>
+
+        </fieldset>
+    </form>
+    
+</body>
 </html>
