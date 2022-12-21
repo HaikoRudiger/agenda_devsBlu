@@ -9,17 +9,16 @@
 }
 
 body {
-	background: linear-gradient(90deg, #c8e6c9, #4bc970);	
-	font-family: Raleway, sans-serif;	
+	background: linear-gradient(90deg, #c8e6c9, #4bc970);		
 }
 
-hr {
-	color: #050806;
+h3{
+	color: #4bc970;
 }
 
 .container {
 	display: flex;
-	align-items: flex-start;
+	/* align-items: center; */
 	justify-content: center;
 	min-height: 100vh;
 }
@@ -134,8 +133,9 @@ hr {
 	border: 1px solid #c8e6c9;
 	text-transform: uppercase;
 	font-weight: 700;
+	display: flex;
 	align-items: center;
-	width: 50%;
+	width: 100%;
 	color: #4bc970;
 	box-shadow: 0px 2px 2px #4bc970;
 	cursor: pointer;
@@ -154,7 +154,6 @@ hr {
 	margin-left: auto;
 	color: #4bc970;
 }
-
 
 .social-login {	
 	position: absolute;
@@ -183,40 +182,6 @@ hr {
 	transform: scale(1.5);	
 }
 
-/* CADASTRO USUARIO*/
-
-.cadastroUsuario {
-	color: #4bc970;
-	font-family: Raleway, sans-serif;
-	font-weight: bold;
-}
-
-/* CALENDARIO */
-
-@import url(https://weloveiconfonts.com/api/?family=fontawesome);
-
-*[class*="fontawesome-"]:before {
-  font-family: 'FontAwesome', sans-serif;
-}
-
-/* ---------- GENERAL ---------- */
-
-h2 {
-	font-size: 2em;
-	line-height: 1.25em;
-	margin: .25em 0;
-	font-family: Raleway, sans-serif;
-}
-
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-.list-inline-item {
-	vertical-align:middle;
-}
-
 ol {
 	text-align: center;	
 	font-weight: bold;
@@ -229,125 +194,4 @@ a {
 	color: black;
 	font-family: Raleway, sans-serif;
 	margin: 10px;
-}
-
-footer {
-	font-family: Raleway, sans-serif;
-	padding: 15px;
-}
-
-.calendar {
-	text-align: center;
-	font-family: Raleway, sans-serif;
-}
-
-.calendar header {
-	position: relative;
-}
-
-.calendar h2 {
-	text-transform: uppercase;
-}
-
-.calendar thead {
-	font-weight: 600;
-	text-transform: uppercase;
-}
-
-.calendar tbody {
-	color: #050806;
-	font-family: Raleway, sans-serif;
-}
-
-.calendar tbody td:hover {
-	border: 2px solid #2cb655;
-}
-
-.calendar td {
-	border: 2px solid transparent;
-	border-radius: 50%;
-	display: inline-block;
-	height: 4em;
-	line-height: 4em;
-	text-align: center;
-	width: 4em;
-	font-family: Raleway, sans-serif;
-}
-
-.calendar .prev-month,
-.calendar .next-month {
-	color: #8d8f8f;
-}
-
-.calendar .prev-month:hover,
-.calendar .next-month:hover {
-	border: 2px solid #cbd1d2;
-}
-
-.current-day {
-	background: #4bc970;
-	color: #f9f9f9;
-}
-
-.event {
-	cursor: pointer;
-	position: relative;
-}
-
-.event:after {
-	background: #2cb655;
-	border-radius: 50%;
-	bottom: .5em;
-	display: block;
-	content: '';
-	height: .5em;
-	left: 50%;
-	margin: -.25em 0 0 -.25em;
-	position: absolute;
-	width: .5em;
-}
-
-.event.current-day:after {
-	background: #f9f9f9;
-}
-
-.btn-prev,
-.btn-next {
-	border: 2px solid #2cb655;
-	border-radius: 50%;
-	color: #2cb655;
-	height: 2em;
-	font-size: .75em;
-	line-height: 2em;
-	margin: -1em;
-	position: absolute;
-	top: 50%;
-	width: 2em;
-}
-
-.btn-prev:hover,
-.btn-next:hover {
-	background: #cbd1d2;
-	color: #f9f9f9;
-}
-
-.btn-prev {
-	left: 6em;
-}
-
-.btn-next {
-	right: 6em;
-}
-
-.titulo-calendario {
-	font-family: Raleway, sans-serif;
-	background: #fff;
-	font-size: 14px;
-	margin-top: 10px;
-	padding: 10px 20px;
-	border-radius: 26px;
-}
-
-footer-basic{
-	text-align: ce;
 }

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="styleevento.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar</title>
+    <title>Evento</title>
 </head>
 
 <body>
@@ -27,23 +27,33 @@
         <a class="btn-next fontawesome-angle-right" href="#"></a> -->
     
       </header>
-
     <div class="container">
         <div class="screen">
             <div class="screen__content">
                 <form class="login">
-                    <div class="login__field">
-                        <i class="login__icon fas fa-user"></i>
-                        <input type="text" class="login__input" placeholder="Nome de Usuário">
+                    <div class="cadastroUsuario">
+                        <h3> DADOS </h3>
                     </div>
                     <div class="login__field">
-                        <i class="login__icon fas fa-lock"></i>
-                        <input type="password" class="login__input" placeholder="Senha">
+                        <i class="login__icon fas fa-caret-right"></i>
+                        <input type="text" class="login__input" placeholder="Nome do Evento">
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon far fa-clock"></i>
+                        <input type="password" class="login__input" placeholder="Hora">
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas far fa-edit"></i>
+                        <input type="text" class="login__input" placeholder="Descrição">
                     </div>
                     <button class="button login__submit">
-                        <span class="button__text">login</span>
+                        <span class="button__text">Salvar</span>
                         <i class="button__icon fas fa-chevron-right"></i>
-                    </button>				
+                    </button>	
+                    <button class="button login__submit">
+                        <span class="button__text">Cancelar</span>
+                        <i class="button__icon fas fa-chevron-left"></i>
+                    </button>			
                 </form>
             </div>
             <div class="screen__background">
