@@ -51,10 +51,10 @@ def novo_usuario():
 
 @app.route("/cadastrar_usuario", methods = ["POST"])
 def cadastrar_usuario():
-
-    nome = request.form["nome_usuario"]
-    username = request.form["nickname"]
-    senha = request.form["senha_usuario"]
+    
+    username = request.form["username"]
+    nome = request.form["nome"]
+    senha = request.form["senha"]
 
     usuario = Usuario.query.filter_by(username = username).first()
     
@@ -62,22 +62,11 @@ def cadastrar_usuario():
         flash("Usuário já cadastrado")
 
         return redirect(url_for("index"))
-    
-    print("Teste de cadastro")
-    novo_usuario = Usuario(nome_usuario = nome, nickname = username, senha_usuario = senha)
-    
+
+    novo_usuario = Usuario(username = username, nome = nome, senha = senha)
+
     db.session.add(novo_usuario)
 
     db.session.commit()
 
     return redirect(url_for("index"))
-
-
-
-"""@app.route("/cadastrar_usuario")
-def cadastrar_usuario():
-    if "usuario_logado" not in session or session["usuario_logado"] is None:
-
-        return redirect(url_for("login", proximo = url_for("cadastrar_usuario")))
-        
-    return render_template("cadastro_usuario.html", titulo = "Cadastrar Usuário")"""

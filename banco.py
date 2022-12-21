@@ -23,7 +23,6 @@ if conn is not None:
                         id serial,
                         username VARCHAR(50) NOT NULL,
                         nome VARCHAR(50) NOT NULL,
-                        admin BOOL NOT NULL,
                         senha VARCHAR(256) NOT NULL,
                       PRIMARY KEY (id));""")
 
