@@ -9,11 +9,7 @@
 </head>
 <body>
 
-    <!-- Remover o código anterios -->
-    {% extends "template.html" %}
-    {% block conteudo %}
-
-    <form action="{{ url_for('criar') }}" method="post">
+    <form action="/cadastrar_usuario" method="post">
         <fieldset>
 
             <div>
@@ -34,9 +30,6 @@
 
         </fieldset>
     </form>
-    
-    {% endblock %}
-    <!-- Remover o código posterior -->
 
 </body>
 </html>

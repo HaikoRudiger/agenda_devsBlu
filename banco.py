@@ -4,10 +4,10 @@ print("Teste de conexão")
 
 try:
     conn = psycopg2.connect(
-    host = "192.168.1.102",
-    port ="5432",
+    host = "localhost",
+    port ="5433",
     database = "postgres", 
-    user="postgres", password = "123456")
+    user="david", password = "123456")
     print("Conectado")
 
 except Exception:

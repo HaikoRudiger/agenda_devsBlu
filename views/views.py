@@ -44,10 +44,40 @@ def logout():
     # Ou retorna para a página principal ou para a página de Login
 
 
-@app.route("/cadastrar_usuario")
+@app.route("/novo_usuario")
+def novo_usuario():
+
+    return render_template("cadastro_usuario.html", titulo = "Criar novo Usuário")
+
+@app.route("/cadastrar_usuario", methods = ["POST"])
+def cadastrar_usuario():
+
+    nome = request.form["nome_usuario"]
+    username = request.form["nickname"]
+    senha = request.form["senha_usuario"]
+
+    usuario = Usuario.query.filter_by(username = username).first()
+    
+    if usuario:
+        flash("Usuário já cadastrado")
+
+        return redirect(url_for("index"))
+    
+    print("Teste de cadastro")
+    novo_usuario = Usuario(nome_usuario = nome, nickname = username, senha_usuario = senha)
+    
+    db.session.add(novo_usuario)
+
+    db.session.commit()
+
+    return redirect(url_for("index"))
+
+
+
+"""@app.route("/cadastrar_usuario")
 def cadastrar_usuario():
     if "usuario_logado" not in session or session["usuario_logado"] is None:
 
         return redirect(url_for("login", proximo = url_for("cadastrar_usuario")))
         
-    return render_template("cadastro_usuario.html", titulo = "Cadastrar Usuário")
+    return render_template("cadastro_usuario.html", titulo = "Cadastrar Usuário")"""

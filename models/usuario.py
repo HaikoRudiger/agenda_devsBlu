@@ -4,7 +4,7 @@ class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
     username = db.Column(db.String(50), nullable = False)
     nome = db.Column(db.String(50), nullable = False)
-    admin = db.Column(db.Boolean, default = False)    
+    admin = db.Column(db.Boolean, default = True)    
     senha = db.Column(db.String(256), nullable = False)
 
 
