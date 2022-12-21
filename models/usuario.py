@@ -7,5 +7,6 @@ class Usuario(db.Model):
     admin = db.Column(db.Boolean, default = False)    
     senha = db.Column(db.String(256), nullable = False)
 
+
 def __repr__(self):
     return '<Name %r>' % self.name

@@ -9,6 +9,14 @@
 </head>
 <body>
 
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
     <form action="{{ url_for('autenticar') }}" method="post">
         <fieldset>
 
@@ -23,7 +31,8 @@
                 <input type="password" class="" id="senha" name="senha" placeholder="Senha">
             </div>
 
-            <button type="submit" class="">Salvar</button>
+            <!-- <button type="submit" class="">Salvar</button> -->
+            <input type="submit" value="Login">
 
         </fieldset>
     </form>

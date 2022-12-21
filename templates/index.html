@@ -11,7 +11,7 @@
 
     <header>
         <ul>
-            <li><a href="/">Cadastar Usuário</a></li>
+            <li><a href="/">Cadastar Usuário</a></li><!-- Rota para cadastra usuário -->
             <li><a href="/listar">Calendário</a></li>
             <li><a href="/login">Trocar de Usuário</a></li>
             <li><a href="/logout">Sair</a></li>
@@ -19,6 +19,14 @@
     </header>
 
     <main>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
 
         {% block conteudo %} {% endblock %}
 
