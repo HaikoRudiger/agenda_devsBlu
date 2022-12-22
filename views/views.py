@@ -49,6 +49,7 @@ def novo_usuario():
 
     return render_template("cadastro_usuario.html", titulo = "Criar novo Usuário")
 
+
 @app.route("/cadastrar_usuario", methods = ["POST"])
 def cadastrar_usuario():
     

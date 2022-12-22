@@ -1,129 +1,125 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <link rel="stylesheet" href="../static/style.css"/>
+    <link rel="stylesheet" href="../static/styleevento.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendário</title>
+    <title>Document</title>
 </head>
 <body>
+  <header>
+  
+    <ul class="list-inline">
 
-    <header>
-        <ul>
-            <li><a href="/">Cadastar Usuário</a></li>
-            <li><a href="/listar">Calendário</a></li>
-            <li><a href="/login">Trocar de Usuário</a></li>
-            <li><a href="/logout">Sair</a></li>
-        </ul>
-    </header>
+    <ol>
+        <a href="cadastrar-usuario.html">Cadastrar</a>
+        <a href="login.html">Login</a>
+        <a href="cadastrar-evento.html">Evento</a>
+        <a href="calendario.html">Calendário</a>
+        <a href="logout.html">Logout</a>
+    </ol>
 
-    <!-- Remover o código anterios -->
-    {% extends "template.html" %}
-    {% block conteudo %}
+    <!-- <a class="btn-prev fontawesome-angle-left" href="#"></a>
+    <a class="btn-next fontawesome-angle-right" href="#"></a> -->
 
-    <main>
-        <table>
+  </header>
+
+    <div class="container">
+
+        <div class="calendar">
+      
+          <table>
+
+            <div class="titulo-calendario">
+              <h2>Dezembro</h2>
+            </div>
+              
+      
             <thead>
-                <tr>
-                    <th colspan="2">Dezembro</th>
-                </tr>
+      
+              <tr>
+      
+                <td>Seg</td>
+                <td>Ter</td>
+                <td>Qua</td>
+                <td>Qui</td>
+                <td>Sex</td>
+                <td>Sab</td>
+                <td>Dom</td>
+      
+              </tr>
+      
             </thead>
+      
             <tbody>
-                <tr>
-                    <td>Seg</td>
-                    <td>Ter</td>
-                    <td>Qua</td>
-                    <td>Qui</td>
-                    <td>Sex</td>
-                    <td>Sab</td>
-                    <td>Dom</td>
-                </tr>
-                <tr>
-                    <td><a href="#"></a></td>
-                    <td><a href="#"></a></td>
-                    <td><a href="#"></a></td>
-                    <td><a href="#"></a></td>
-                    <td><a href="#">1</a></td>
-                    <td><a href="#">2</a></td>
-                    <td><a href="#">3</a></td>
-                </tr>
-                <tr>
-                    <td><a href="#">4</a></td>
-                    <td><a href="#">5</a></td>
-                    <td><a href="#">6</a></td>
-                    <td><a href="#">7</a></td>
-                    <td><a href="#">8</a></td>
-                    <td><a href="#">9</a></td>
-                    <td><a href="#">10</a></td>
-                </tr>
-                <tr>
-                    <td><a href="#">11</a></td>
-                    <td><a href="#">12</a></td>
-                    <td><a href="#">13</a></td>
-                    <td><a href="#">14</a></td>
-                    <td><a href="#">15</a></td>
-                    <td><a href="#">16</a></td>
-                    <td><a href="#">17</a></td>
-                </tr>
-                <tr>
-                    <td><a href="#">18</a></td>
-                    <td><a href="#">19</a></td>
-                    <td><a href="#">20</a></td>
-                    <td><a href="#">21</a></td>
-                    <td><a href="#">22</a></td>
-                    <td><a href="#">23</a></td>
-                    <td><a href="#">24</a></td>
-                </tr>
-                <tr>
-                    <td><a href="#">25</a></td>
-                    <td><a href="#">26</a></td>
-                    <td><a href="#">27</a></td>
-                    <td><a href="#">28</a></td>
-                    <td><a href="#">29</a></td>
-                    <td><a href="#">30</a></td>
-                    <td><a href="#">31</a></td>
-
-                </tr>
+      
+              
+              <tr>
+                <td class="next-month">28</td>
+                <td class="next-month">29</td>
+                <td class="next-month">30</td>
+                <td><a href="">1</a></td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+              </tr>
+      
+              <tr>
+                <td>19</td>
+                <td >20</td>
+                <td class="current-day event">21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td class="event">25</td>
+              </tr>
+              <tr>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+                <td class="next-month">1</td>
+              </tr>
+      
             </tbody>
-        </table>
-    </main>
+      
+          </table>
 
-    <footer>                
-        <ul>
-            <li><a href="#">Sobre</a></li>
-        </ul>
-        <p>+Devs2Blu © 2022</p>
-    </footer>
+          <button class="button login__submit">
+            <span class="button__text">Sair</span>
+            <i class="button__icon fas fa-chevron-left"></i>
+        </button>	
+      
+        <div class="footer-basic">
+            <footer>
+                <p class="copyright"> +Devs2Blu © 2022</p>
+            </footer>
+        </div>
 
+        </div> <!-- end calendar -->
+      
+      </div> <!-- end container -->
 </body>
 </html>
-
-<!-- Trocar por este código, fazer igual ao "listar.html" do exemplo
-        
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Idade</th>
-                <th scope="col">Altura</th>
-            </tr>
-            </thead>
-            <tbody>
-                {% for pessoa in pessoas %}
-                    <tr>
-                        <td>{{ pessoa.nome }}</td>
-                        <td>{{ pessoa.idade }}</td>
-                        <td>{{ pessoa.altura }}</td>
-
-                        <td>
-                            <a href="{{ url_for('editar', id=pessoa.id ) }}">Editar</a> |
-                            <a href="{{ url_for('deletar', id=pessoa.id ) }}">deletar</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-
-        </table>
-    </div>
-
-{% endblock %} -->
