@@ -1,11 +1,28 @@
-from flask import render_template, request, redirect, flash, url_for,session, auth
+from flask import render_template, request, redirect, flash, url_for,session
 from main import db, app
 from models.evento import Evento
 from models.usuario import Usuario
 
-@app.route('/index')
+#jean
+from controller import authjean
+import calendar
+
+@app.route('/')
 def index():
-    return redirect(url_for('index'))
+    print(session)
+    if session:
+        if (session['usuario_logado'] == True):
+            print("Entrou")
+
+            cal = calendar.Calendar(firstweekday=6)
+            DIAS_DA_SEMANA = ("SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY")
+            calDays = cal.monthdayscalendar(2022, 12)
+
+            return render_template('calendario.html', calDays=calDays, aux=0, DIAS_DA_SEMANA=DIAS_DA_SEMANA)
+        else:
+            return redirect(url_for('login'))
+    else:
+        return redirect('/login')
 
 @app.route('/novo-usuario')
 def novo():
@@ -18,13 +35,13 @@ def cadastro_usuario():
     userName = request.form['username']
     senha = request.form['senha'] #ver com a parte do Jean.
 
-    usuario = Usuario.query.filter_by('username' = userName).first()
+    usuario = Usuario.query.filter_by(username = userName).first()
     
     if usuario:
         flash('Usuário já cadastrado')
         return redirect(url_for('index'))
     
-    novo_usuario = Usuario('nome' = nome, 'username' = userName, 'senha' = senha)
+    novo_usuario = Usuario(nome = nome, username = userName, senha = senha)
     
     db.session.add(novo_usuario)
 
@@ -42,17 +59,23 @@ def login():
 
 @app.route('/autenticar', methods=['POST',])
 def autenticar():
-    autenticado = auth.validaLogin(request.form['usuario'], request.form['senha'])
-    if autenticado:
+    autenticado = authjean.validaLogin(request.form['usuario'], request.form['senha'])
+    
+    print("Esta logado ou não")
+    print(autenticado)
+    
+    if autenticado == True:
         session['usuario_logado'] = True
 
         flash('Logado com sucesso')
 
-        return redirect(url_for("inicio"))
-
+        return redirect(url_for("index"))
+    return redirect(url_for("login"))
 @app.route('/logout')
 def logout():
     session.clear()
+    session['usuario_logado'] = False
+    print(session)
     flash('VOCE FOi DESCONECTADO')
     return redirect(url_for('login'))
 
@@ -65,13 +88,13 @@ def cadastrar_evento():
     publico = request.form['publico']
     ativo = request.form['ativo']
 
-    evento = Evento.query.filter_by('data_evento' = data_evento).first()
+    evento = Evento.query.filter_by(data_evento = data_evento).first()
     
     if evento:
         flash('Já existe um evento nessa data')
         return redirect(url_for('calendario'))
 
-    novo_evento = Evento('data_evento' = data_evento, 'titulo_evento' = titulo_evento, 'descricao_evento' = descricao_evento, 'publico' = publico, 'ativo' = ativo)
+    novo_evento = Evento(data_evento = data_evento, titulo_evento = titulo_evento, descricao_evento = descricao_evento, publico = publico, ativo = ativo)
     
     db.session.add(novo_evento)
 
@@ -94,7 +117,7 @@ def editar(id):
 @app.route('/deletar/<int:id>')
 def deletar(id):
 
-    if 'usuario_logado' not in session or session['usuario_logado' is None]:
+    if 'usuario_logado' not in session or session['usuario_logado' == None]:
         return redirect(url_for('login'))
     
     Evento.query.filter_by(id=id).delete()

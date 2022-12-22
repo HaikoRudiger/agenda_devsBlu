@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="../static/style.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css"/>
     <meta charset="UTF-8">
@@ -16,11 +16,11 @@
         <ul class="list-inline">
     
         <ol>
-            <a href="cadastro.html">Cadastrar</a>
-            <a href="login.html">Login</a>
-            <a href="eventos.html">Evento</a>
-            <a href="calendar.html">Calendário</a>
-            <a href="logout.html">Logout</a>
+            <a href="/cadastro">Cadastrar</a>
+            <a href="/login">Login</a>
+            <a href="/eventos">Evento</a>
+            <a href="/calendar">Calendário</a>
+            <a href="/logout">Logout</a>
         </ol>
     
         <!-- <a class="btn-prev fontawesome-angle-left" href="#"></a>
@@ -31,14 +31,14 @@
     <div class="container">
         <div class="screen">
             <div class="screen__content">
-                <form class="login">
+                <form class="login" action="/autenticar" method="post">
                     <div class="login__field">
                         <i class="login__icon fas fa-user"></i>
-                        <input type="text" class="login__input" placeholder="Nome de Usuário">
+                        <input type="text" class="login__input" name="usuario" placeholder="Nome de Usuário">
                     </div>
                     <div class="login__field">
                         <i class="login__icon fas fa-lock"></i>
-                        <input type="password" class="login__input" placeholder="Senha">
+                        <input type="password" class="login__input" name="senha" placeholder="Senha">
                     </div>
                     <button class="button login__submit">
                         <span class="button__text">login</span>

@@ -1,10 +1,10 @@
-from usuario import Usuario
+from models.usuario import Usuario
 from main import db
 
 class Evento(db.Model):
     
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    id_usuario = db.Column(db.Integer, ForeignKey = (Usuario.id))
+    #id_usuario = db.Column(db.Integer, ForeignKey = (Usuario.id))
     data_evento = db.Column(db.Date, nullable = False)
     titulo = db.Column(db.String(50), nullable = False)
     descricao = db.Column(db.String(200), nullable = False)

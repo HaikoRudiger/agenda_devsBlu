@@ -18,19 +18,18 @@ def validaLogin(usuario, senha):
     sql_select_query = """select * FROM usuario WHERE username = ?"""
     cursor.execute(sql_select_query, (usuario,))
     records = cursor.fetchall()
-
+    print("Banco")
     print(records)
     
     if records == []:
-        print("Erro")
-        return "Erro"
+        print("Entrou no false base vazia")
+        return False
 
-    #print(records[0][4])
-    
-    if records[0][4] == hashlib.sha256(senha.encode('utf-8')).hexdigest():
+    elif records[0][4] == hashlib.sha256(senha.encode('utf-8')).hexdigest():
         print("Senha correta")
         return True
-    
+    else:
+        print("PORRA!@")
     # if session:
     #     if (session['logged_in'] == True):
     #         return redirect(url_for('inicio'))
