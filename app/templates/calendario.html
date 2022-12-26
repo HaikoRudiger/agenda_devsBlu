@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+{% block conteudo %}
+
+        <main class="container">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        {% for dias_ext in dias_da_semana %}
+                            <th scope="col">{{ dias_ext }}</th>
+                        {% endfor %}                    
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for semanas in calDays %}
+                        <tr>
+                        {% for dias in semanas %}
+                            <td id="i_dia{{ dias }}" name="c_dia{{ dias }}"><a href="/evento">{{ dias }}</a></td>                                
+                        {% endfor %}
+                        </tr>
+                    {% endfor %}            
+                </tbody>
+            </table>
+
+        </main>
+        
+{% endblock %}
+
+
+, id=pessoa.id passar como parametro
