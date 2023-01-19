@@ -53,19 +53,29 @@ FOREIGN KEY (id_usuario)
         * Estrutura de arquivos e pastas         *
         * -------------------------------------- *
 
+
 app
 ├── models 
 |   ├── evento.py
 |   └── usuario.py
 ├── static
-|   └── style.css
+|   ├── css
+|   |   └── style.css
+|   ├── imagens
+|   |   ├── logo.jpg
+|   |   ├── profile-alien.jpg
+|   |   ├── profile-chewbacca.jpg
+|   |   ├── profile-david.jpg
+|   |   └── profile-predador.jpg
 ├── templates
 |   ├── calendario.html
+|   ├── editar_evento.html
 |   ├── evento.html
 |   ├── home.html
 |   ├── index.html
-|   ├── listar_eventos.html => Falta fazero layout desta página
+|   ├── listar_eventos.html
 |   ├── login.html
+|   ├── perfil.html
 |   ├── registro.html
 |   └── sobre.html
 ├── views
@@ -75,3 +85,51 @@ app
 ├── banco.py
 ├── config.py
 └── main.py
+
+
+        * -------------------------------------- *
+        * Definir padrões da variáveis           *
+        * -------------------------------------- *
+
+
+Definir nomenclatura das variáveis
+
+    * HTML
+    * PostgreSQL
+    * Python
+
+
+        * -------------------------------------- *
+        * O que falta fazer                      *
+        * -------------------------------------- *
+
+
+ => Mês anterio e Mês Posterior na aba calendário
+
+ x> Criar a link Usuário na nagegação. "Feito"
+
+ x> Editar usuários. "Feito"
+
+ x> Deletar usuários. "Feito"
+
+ x> Ver a possibilidade de trocar Login para Logout quando o usuário
+    estiver logado. "Feito"
+
+ x> Fazer o layout das páginas HTML. "Feito"
+
+
+        * -------------------------------------- *
+        * Problemas a ser corrigido              *
+        * -------------------------------------- *
+
+
+ => A função (autenticar) não está funcionando quando a senha do usuário
+    for digitada errada.
+
+ x> A função (evento) não está passando corretamento o valor nos dias e mêses
+    com uma casa decimal, (1, 2, 3, 4, 5, 6, 7, 8, 9). "Feito"
+
+ => Colocar required nos input HTML.
+
+ => Colocar essa linha (<input type="hidden" name="proximo" value="{{ proximo or url_for('calendario') }}">)
+    para qunado fazer o login ser direcionado para a página especifica.
